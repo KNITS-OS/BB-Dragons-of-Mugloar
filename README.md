@@ -159,3 +159,12 @@ Design is relatively easy, but open for high availability implementations.
 | `mugloar.strategy.mission-not-found-threshold` | `2`                                 | Threshold for the number of missions not found triggering a batch reload.|
 | `mugloar.throttling.api-throttling-delay`   | `100`                                   | Delay time for mugloar API client side throttling in milliseconds.              |
 | `mugloar.throttling.api-throttling-on-exception-delay` | `300`                         | Delay time for mugloar API client side throttling on exception in milliseconds. |
+
+
+## Credits
+
+**Author: Stefano Fiorenza**
+
+- **GitHub:** [knits-os](https://github.com/KNITS-OS)
+- **LinkedIn:** [Stefano Fiorenza](https://www.linkedin.com/in/stefano-fiorenza-a241a432/)
+- **Email:** [stefano.fiorenza@example.com](mailto:stefanofiorenza@gmail.com)
