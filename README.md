@@ -60,12 +60,12 @@ See vars section below for more details.
 
 
 1. Test api using swagger page:
-   http://localhost:8099/swagger-ui/index.html
+   `http://localhost:8099/swagger-ui/index.html`
 
 2. Verify from logs at /temp/mugloar/logs/mugloar.log execution
 
 3. Access DB event table to monitor execution using following query:
-   Change E.game_external_id according to given gameId
+   Change `E.game_external_id` according to given `gameId`
 ```sql
 select E.game_external_id, E.event_external_id,
 E.type,E.outcome,
