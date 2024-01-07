@@ -1,0 +1,10 @@
+                   _                   
+                  | |                  
+ ____  _   _  ____| | ___  _____  ____ 
+|    \| | | |/ _  | |/ _ \(____ |/ ___)
+| | | | |_| ( (_| | | |_| / ___ | |    
+|_|_|_|____/ \___ |\_)___/\_____|_|    
+            (_____|
+
+Application Name: Mugloar
+Spring Boot Version ${spring-boot.formatted-version}

@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+
+  mugloar-postgres:
+    build:
+      context: .
+      dockerfile: docker/postgres.Dockerfile
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./docker/mugloar.stage.env
+    volumes:
+      - mugloar-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  mugloar-api:
+    container_name: mugloar-api
+    depends_on:
+      mugloar-postgres:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: docker/mugloar.Dockerfile
+    ports:
+      - "8099:8099"
+    env_file:
+      - ./docker/mugloar.stage.env
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:8099/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  mugloar-data:

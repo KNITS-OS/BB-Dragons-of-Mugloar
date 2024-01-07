@@ -1,0 +1,77 @@
+spring:
+  profile:
+    active: ${PROFILE}
+  application:
+    name: Mugloar
+
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+        format_sql: true
+  mvc:
+    format:
+      date-time: iso
+server:
+  port: ${SERVER_PORT}
+
+security:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+debug: false
+logging:
+  level:
+#    root: ${LOG_ROOT}
+    org:
+      springframework: ${LOG_SPRING}
+      hibernate:
+        SQL: ${LOG_SQL_HIBERNATE}
+    com:
+      bigbank:
+        mugloar: ${LOG_MUGLOAR}
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+mugloar:
+  save-execution: ${SAVE_EXECUTION:true}
+  mugloar-api-host: ${MUGLOAR_HOST:https://dragonsofmugloar.com}
+  auto-start-game: ${AUTO_GAME_START:false}
+  cache:
+    initial-capacity: ${CACHE_INITIAL_CAPACITY:10}
+    maximum-size: ${CACHE_MAXIMUM_SIZE:1000}
+    expire-after-write-in-seconds: ${CACHE_EXPIRE_AFTER_WRITE_IN_SECONDS:1200}
+    expire-after-last-access-in-seconds: ${CACHE_EXPIRE_AFTER_LAST_ACCESS_IN_SECONDS:600}
+  async:
+    async-execution: ${ASYNC_ASYNC_EXECUTION:false}
+    async-callback-url: ${ASYNC_ASYNC_CALLBACK_URL:www.somehost.com}
+    async-executor-pool-size: ${ASYNC_ASYNC_EXECUTOR_POOL_SIZE:10}
+  strategy:
+    gold-reserve-hot-pot: ${STRATEGY_GOLD_RESERVE_HOT_POT:200}
+    lives-accept-safe-limit: ${STRATEGY_LIVES_ACCEPT_SAFE_LIMIT:3}
+    lives-accept-easy-limit: ${STRATEGY_LIVES_ACCEPT_EASY_LIMIT:4}
+    lives-accept-risky-limit: ${STRATEGY_LIVES_ACCEPT_RISKY_LIMIT:5}
+    lives-min-safe-level: ${STRATEGY_LIVES_MIN_SAFE_LEVEL:5}
+    mission-not-found-threshold: ${STRATEGY_MISSION_NOT_FOUND_THRESHOLD:2}
+  throttling:
+    api-throttling-delay: ${THROTTLING_API_THROTTLING_DELAY:100}
+    api-throttling-on-exception-delay: ${THROTTLING_API_THROTTLING_ON_EXCEPTION_DELAY:300}
