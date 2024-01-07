@@ -1,4 +1,4 @@
-package com.bigbank.mugloar.mock.game;
+package com.bigbank.mugloar.mock.dto.game;
 
 import com.bigbank.mugloar.dto.domain.game.GameExecutionDto;
 import lombok.Builder;

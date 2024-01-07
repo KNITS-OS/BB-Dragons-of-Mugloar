@@ -3,7 +3,7 @@ package com.bigbank.mugloar.controller.core;
 
 import com.bigbank.mugloar.dto.api.core.queries.GameResponse;
 import com.bigbank.mugloar.dto.domain.core.GameDto;
-import com.bigbank.mugloar.mock.core.GameDtoMock;
+import com.bigbank.mugloar.mock.dto.core.GameDtoMock;
 import com.bigbank.mugloar.service.core.GameService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
