@@ -140,7 +140,10 @@ public class EventServiceTest {
         GameDto gameState = GameDto.builder().gameId(gameId).build();
         MissionDto mission = MissionDtoMock.shallowMissionDto(missionAdid,gameId);
         MissionResultDto missionResult = MissionResultDtoMock.shallowMissionResultDto(true);
-        when(eventRepository.save(any())).thenReturn(EventMock.shallowEvent(1L,eventType, outcome));
+        Event eventSaved =EventMock.shallowEvent(1L,eventType, outcome);
+        eventSaved.setEventExternalId(missionAdid);
+        eventSaved.setGameExternalId(gameId);
+        when(eventRepository.save(any())).thenReturn(eventSaved);
 
         EventDto result = eventService.saveExecutedMissionEvent(gameState, mission, missionResult);
         verify(eventMapper, times(1)).toDto(any());
