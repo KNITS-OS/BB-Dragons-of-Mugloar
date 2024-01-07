@@ -105,9 +105,9 @@ Good luck!
 
 ## Design explanation
 
-**Packaging**: Mugloar-Api is packaged by layer, and divided between **core** and **game** features at every level.
-**CQRS**: Command Query Responsibility Segregation pattern has been used in dto used to represent data in memory and requests to external api.
-**Feign Http client:** External api calls are performed with Feign http client, with a retry implementation and a client side delay according to throttling configuration.
+**Packaging**: Mugloar-Api is packaged by layer, and divided between **core** and **game** features at every level.<br>
+**CQRS**: Command Query Responsibility Segregation pattern has been used in dto used to represent data in memory and requests to external api.<br>
+**Feign Http client:** External api calls are performed with Feign http client, with a retry implementation and a client side delay according to throttling configuration.<br>
 
 
 **core packages**:
