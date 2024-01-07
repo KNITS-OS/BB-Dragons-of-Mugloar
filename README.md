@@ -39,8 +39,8 @@ https://docs.docker.com/compose/install/
 1. Clone repository
 ```bash
 git clone https://github.com/KNITS-OS/BB-Dragons-of-Mugloar.git
-cd Mugloar 
-cd Mugloar # not a typo you need it twice to enter nested Mugloar dirs
+cd BB-Dragons-of-Mugloar 
+cd Mugloar
 ```
 2. Build Docker images from docker compose file
 ```bash
