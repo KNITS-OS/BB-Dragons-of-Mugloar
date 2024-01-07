@@ -1,3 +1,4 @@
+
 # Dragons of Mugloar
 
 ```                   _                     
@@ -118,16 +119,22 @@ Game summary, Mission, MissionResult and ItemPurchased are saved if flag (see co
 Here the implementation of features in requirements are implemented.
 Design is relatively easy, but open for high availability implementations.
 
-Here are key classes with relevant responsibilities:
+## Here are key classes with relevant responsibilities:
 
 | Service             | Responsibilities                           | Description                                     |
 |---------------------|--------------------------------------------|-------------------------------------------------|
-| ExampleService      | - Handle data processing<br> - Manage state | This service is responsible for processing data and managing application state. |
-| UserService         | - User authentication<br> - User management | Manages user authentication and provides functionality for user management. |
-| PaymentService      | - Process payment transactions<br> - Billing | Handles payment processing and billing-related tasks. |
-| NotificationService | - Send notifications<br> - Manage templates  | Responsible for sending notifications and managing notification templates. |
-| AnalyticsService     | - Collect and analyze data<br> - Reporting  | Collects and analyzes application data, generates reports for analysis. |
+| [EventServiceBasicImpl](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/game/impl/EventServiceBasicImpl.java)| Save game events from start to end to database | **Following events are saved**:<br> - StartGame <br> - ExecutedMission <br> - PurchasedItem <br> - MissionOutOfSynch <br> - MissionNotFoundOnServer <br>- ExpiredMission <br> - EndGame <br>| 
+| [GameStateService](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/game/impl/GameStateServiceCaffeineImpl.java)| Provide a cache to share current Game object between services <br> -  | Current implementation uses Caffeine Cache.  <br> Is injected in components as dependency using an interface, allowing possibility to be replaced in a High Availability version of this system, with an implementation using an external cache such as Redis. |
+| [ItemStateService](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/game/impl/ItemStateServiceCaffeineImpl.java)| Provide a cache to share Items available in current game(s), assuming that list of items might be changed on external api. <br> -  | See GameStateService |
+| [MissionProcessorBasicImpl](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/game/impl/MissionEvaluatorBasicImpl.java) | Process a batch of missions fetched by MissionService through external api. <br>  | Is in charge of processing Missions in batch one by one, skipping them in case of Skippable Exceptions, and updating game in cache for every completed execution (both failure and success). <br> It uses ItemProcessor to evaluate at the end of every Mission execution the purchase of power items.  |
+| [MissionEvaluatorBasicImpl](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/game/impl/MissionEvaluatorBasicImpl.java) | select best Mission to run next according to strategy configuration.  | Groups missions in batch in ordered Queue according to their risk level.<br> According to strategy defined in configuration is responsible for the selection of the most suitable Mission to run next. .  |
+| [GameExecutionService](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/game/GameExecutionService.java) | Entry point for Game Execution. <br> Responsible for running the game from beginning to the end | According to configuration can run next game(s) in current thread or distribute them between the available threads from the ExecutorService thread pool. Default size 10.  |
 
+### Most relevant from Core package:
+| Service             | Responsibilities                           | Description                                     |
+|---------------------|--------------------------------------------|-------------------------------------------------|
+| [MissionService](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/core/MissionService.java) | Load next batch of missions from external api. <br> Execute single Mission from batch | Implements Mission execution providing robust support for several unexpected results received from external api, together with a retry policy with increased backpressure delay. When execution is completed updates are delegated to MissionProcessor.  |
+| [GameService](https://github.com/KNITS-OS/BB-Dragons-of-Mugloar/blob/main/Mugloar/src/main/java/com/bigbank/mugloar/service/core/GameService.java) | Is reponsible for persistence of executed Games | Save games on start and save it back at the end. In meanwhile updates are happening only on GameStateService cache.  |
 
 
 ## Configuration with env vars:
