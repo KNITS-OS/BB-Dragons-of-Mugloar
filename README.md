@@ -58,27 +58,28 @@ Env vars example files are provided under /docker dir.
 Different values can be set in different host systems overriding them accordingly.
 See vars section below for more details.
 
+**Please note:** With default configuration Mugloar-Api will start automatically a Game after 3 seconds from boot to check everything is connected.
 
 1. Test api using swagger page:
    `http://localhost:8099/swagger-ui/index.html`
 
-2. Verify from logs at /temp/mugloar/logs/mugloar.log execution
+2. Verify from logs at `/temp/mugloar/logs/mugloar.log execution`
 
 3. Access DB event table to monitor execution using following query:
    Change `E.game_external_id` according to given `gameId`
 ```sql
-select E.game_external_id, E.event_external_id,
-E.type,E.outcome,
+select E.game_external_id, E.event_external_id,E.type,E.outcome,
 E.operation_amount, E.game_gold, E.response_gold, E.game_score, E.response_score,
 E.game_lives, E.response_lives, E.game_level, E.response_level,
 E.operation_counter, E.game_turn, E.response_turn
-
 from event E
 where E.game_external_id='1sCkOLBS'
 order by E.operation_counter;
 ```
 4. Is possible to get the current status of the game
    GET[/api/game-executions/{gameId}](http://localhost:8099/swagger-ui/index.html#/game-execution-controller/findByExternalId)
+
+Good luck!
 
 
 ## Tech stack
@@ -100,13 +101,13 @@ order by E.operation_counter;
 - [x] Entity/Dto mapping with Mapstruct
 - [x] Asynchronous execution with Thread pool and CompleteableFuture
 - [x] Unit tests with Surefire plugin (exclude *IT. tests)
-- [x]  Integration tests with fail safe plugin (exclude unit tests)
+- [x] Integration tests with fail safe plugin (exclude unit tests)
 
 ## Design explanation
 
 **Packaging**: Mugloar-Api is packaged by layer, and divided between **core** and **game** features at every level.
 **CQRS**: Command Query Responsibility Segregation pattern has been used in dto used to represent data in memory and requests to external api.
-**Feign Http client:** External api calls are performed with Feign http client, with a retry implementation and a client side dealy according to throttling configuration.
+**Feign Http client:** External api calls are performed with Feign http client, with a retry implementation and a client side delay according to throttling configuration.
 
 
 **core packages**:
