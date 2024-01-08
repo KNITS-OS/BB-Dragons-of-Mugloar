@@ -1,4 +1,4 @@
-package com.bigbank.mugloar.mock.core;
+package com.bigbank.mugloar.mock.dto.core;
 
 import com.bigbank.mugloar.dto.domain.core.MissionResultDto;
 import com.bigbank.mugloar.model.MissionResultType;

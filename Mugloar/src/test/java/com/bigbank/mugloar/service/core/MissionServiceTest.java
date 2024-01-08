@@ -6,7 +6,7 @@ import com.bigbank.mugloar.dto.domain.core.MissionDto;
 import com.bigbank.mugloar.dto.domain.core.MissionResultDto;
 import com.bigbank.mugloar.dto.domain.game.MissionBatchDto;
 import com.bigbank.mugloar.mappers.MissionMapper;
-import com.bigbank.mugloar.mock.core.MissionDtoMock;
+import com.bigbank.mugloar.mock.dto.core.MissionDtoMock;
 import com.bigbank.mugloar.model.Mission;
 import com.bigbank.mugloar.proxy.MissionProxy;
 import com.bigbank.mugloar.repository.core.MissionRepository;

@@ -4,9 +4,8 @@ import com.bigbank.mugloar.config.ApplicationProperties;
 import com.bigbank.mugloar.dto.domain.core.GameDto;
 import com.bigbank.mugloar.dto.domain.core.MissionDto;
 import com.bigbank.mugloar.dto.domain.game.MissionBatchDto;
-import com.bigbank.mugloar.mock.core.MissionDtoMock;
+import com.bigbank.mugloar.mock.dto.core.MissionDtoMock;
 import com.bigbank.mugloar.service.game.impl.MissionEvaluatorBasicImpl;
-import com.bigbank.mugloar.util.MissionConsts;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -108,7 +107,7 @@ public class MissionEvaluatorTest {
 
     private Queue<MissionDto> mockMissionsWithWeightedReward(String probability,int weightedReward){
         Queue<MissionDto> missionQueue = new LinkedList<>();
-        MissionDto mission =MissionDtoMock.shallowMissionDto(MOCK_MISSION_ID,MOCK_GAME_ID);
+        MissionDto mission = MissionDtoMock.shallowMissionDto(MOCK_MISSION_ID,MOCK_GAME_ID);
         mission.setProbability(probability);
         mission.setRiskWeightedReward(weightedReward);
         missionQueue.add(mission);

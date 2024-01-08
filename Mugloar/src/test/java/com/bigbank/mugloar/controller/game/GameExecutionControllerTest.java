@@ -1,13 +1,12 @@
 package com.bigbank.mugloar.controller.game;
 
-import com.bigbank.mugloar.controller.game.GameExecutionController;
 import com.bigbank.mugloar.dto.api.game.command.StartGameExecutionRequest;
 import com.bigbank.mugloar.dto.api.game.command.StartGameExecutionResponse;
 import com.bigbank.mugloar.dto.api.game.queries.GameExecutionResponse;
 import com.bigbank.mugloar.dto.domain.game.GameExecutionDto;
 import com.bigbank.mugloar.dto.domain.game.GameExecutionReportDto;
 import com.bigbank.mugloar.dto.domain.game.GameExecutionConfigDto;
-import com.bigbank.mugloar.mock.game.GameExecutionDtoMock;
+import com.bigbank.mugloar.mock.dto.game.GameExecutionDtoMock;
 import com.bigbank.mugloar.service.game.GameExecutionService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

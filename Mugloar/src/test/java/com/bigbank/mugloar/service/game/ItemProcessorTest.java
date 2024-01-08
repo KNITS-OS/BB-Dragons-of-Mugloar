@@ -5,7 +5,7 @@ import com.bigbank.mugloar.dto.api.external.domugloar.PurchaseItemResponse;
 import com.bigbank.mugloar.dto.domain.core.GameDto;
 import com.bigbank.mugloar.dto.domain.core.ItemDto;
 import com.bigbank.mugloar.dto.domain.core.PurchasedItemDto;
-import com.bigbank.mugloar.mock.core.ItemDtoMock;
+import com.bigbank.mugloar.mock.dto.core.ItemDtoMock;
 import com.bigbank.mugloar.service.core.ItemService;
 import com.bigbank.mugloar.service.game.impl.ItemProcessorBasicImpl;
 import com.bigbank.mugloar.util.ItemConsts;

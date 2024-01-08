@@ -1,14 +1,18 @@
-package com.bigbank.mugloar.mock.core;
+package com.bigbank.mugloar.mock.dto.core;
 
 import com.bigbank.mugloar.dto.domain.core.GameDto;
 
+import com.bigbank.mugloar.dto.domain.game.EventDto;
+import com.bigbank.mugloar.model.EventType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 
 @Data
@@ -40,5 +44,13 @@ public class GameDtoMock {
                 .outcome(null)
                 .executedMissionsIds(new HashSet<>())
                 .build();
+    }
+
+    public static List<GameDto> shallowGameDtos(int howMany) {
+        List<GameDto> games = new ArrayList<>();
+        for (long id = 1; id <= howMany; id++) {
+            games.add(shallowGameDto(id, "GameId"+id));
+        }
+        return games;
     }
 }

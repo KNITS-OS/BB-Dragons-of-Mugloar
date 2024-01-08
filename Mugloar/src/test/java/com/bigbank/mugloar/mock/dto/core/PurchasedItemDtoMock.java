@@ -1,7 +1,6 @@
-package com.bigbank.mugloar.mock.core;
+package com.bigbank.mugloar.mock.dto.core;
 
 import com.bigbank.mugloar.dto.domain.core.PurchasedItemDto;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
