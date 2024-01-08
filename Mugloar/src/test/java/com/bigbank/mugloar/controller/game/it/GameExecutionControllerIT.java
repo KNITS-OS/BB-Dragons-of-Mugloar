@@ -1,4 +1,4 @@
-package com.bigbank.mugloar.service.game.it;
+package com.bigbank.mugloar.controller.game.it;
 
 import com.bigbank.mugloar.dto.api.game.command.StartGameExecutionRequest;
 import com.bigbank.mugloar.dto.api.game.command.StartGameExecutionResponse;

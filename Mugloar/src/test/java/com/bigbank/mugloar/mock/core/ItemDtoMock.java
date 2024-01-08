@@ -18,8 +18,8 @@ public class ItemDtoMock {
         return ItemDto.builder()
                 .id(id)
                 .itemId(itemId)
-                .name("MockItem")
-                .cost(25.0)
+                .name(itemId)
+                .cost(100.0)
                 .build();
     }
 

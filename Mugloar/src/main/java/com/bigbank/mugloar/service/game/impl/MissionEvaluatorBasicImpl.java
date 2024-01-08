@@ -7,6 +7,7 @@ import com.bigbank.mugloar.exception.MissionBatchException;
 import com.bigbank.mugloar.exception.MissionDuplicatedException;
 import com.bigbank.mugloar.exception.MissionExpiredException;
 import com.bigbank.mugloar.processor.MissionEvaluator;
+import com.bigbank.mugloar.service.game.GameStateService;
 import com.bigbank.mugloar.util.MissionConsts;
 import com.bigbank.mugloar.dto.domain.core.MissionDto;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ import static java.lang.String.format;
 public class MissionEvaluatorBasicImpl implements MissionEvaluator {
 
     private final ApplicationProperties appConfig;
-    private final GameStateServiceCaffeineImpl gameStateService;
+    private final GameStateService gameStateService;
 
 
     public MissionDto selectNextMissionFromBatch(MissionBatchDto missionBatch) {

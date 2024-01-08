@@ -23,4 +23,6 @@ public class ItemConsts {
     public static final List<String> POWER_ITEMS_300 =List.of(RF,IRON,MTRIX,WINGPOTMAX);
 
 
+    public static final String SUCCESS ="Success" ;
+    public static final String FAIL ="Fail" ;
 }

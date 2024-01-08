@@ -35,7 +35,6 @@ public class ItemProcessorBasicImpl implements ItemProcessor {
     }
 
     private void evaluateHealingWithHotPot(GameDto gameState) {
-
         ItemDto hotPotItem= itemStateService.getAvailableItems(gameState.getGameId()).get(ItemConsts.HPOT);
         while (gameState.getLives() < appConfig.getStrategy().getLivesMinSafeLevel() &&
                 gameState.getGold() > hotPotItem.getCost()) {
